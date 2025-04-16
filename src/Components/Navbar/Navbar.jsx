@@ -11,7 +11,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="bg-black border-gray-200">
+    <nav className=" border-gray-200 fixed top-0 left-0 right-0 z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo} className="w-12 h-12" alt="Logo" />
