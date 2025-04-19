@@ -6,6 +6,8 @@ import Home from "./Components/Home/Home"
 import Layout from './Components/Layout/Layout'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Crew from './Components/Crew/Crew'
+import Technology from './Components/Technology/Technology'
 
 
 function App() {
@@ -13,7 +15,9 @@ function App() {
   const router=createBrowserRouter([
     {path:"" ,element:<Layout/>,children:[
       {index:true,element:<Home/>},
-      // {path:"brands",element:<ProtectedRoute><Brands/></ProtectedRoute>},
+      {path:"crew",element:<Crew/>},
+      
+      {path:"technology",element:<Technology/>},
       
     ]}
   ])
