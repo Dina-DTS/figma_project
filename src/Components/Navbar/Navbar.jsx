@@ -20,10 +20,8 @@ export default function Navbar() {
           <img src={logo} alt="Logo" className="w-12 h-12" />
         </NavLink>
 
-        {/* Line between logo and nav */}
         <div className="hidden lg:block absolute left-24 right-1/2 h-px bg-white/30 backdrop-blur-sm z-10" />
 
-        {/* Hamburger Button for small screens */}
         <button
           className="lg:hidden z-20"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -34,7 +32,6 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Nav Links for large screens */}
         <ul className="hidden lg:flex backdrop-blur-md bg-white/10 text-white px-16 py-6 gap-10 tracking-widest uppercase font-light text-sm ml-auto">
           {navLinks.map(({ name, to, prefix }) => (
             <li key={name}>
@@ -54,14 +51,13 @@ export default function Navbar() {
         </ul>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden mt-4 flex flex-col items-center gap-4 bg-white/10 backdrop-blur-md py-6 rounded-lg text-sm uppercase tracking-wider">
           {navLinks.map(({ name, to, prefix }) => (
             <NavLink
               key={name}
               to={to}
-              onClick={() => setMenuOpen(false)} // Close on link click
+              onClick={() => setMenuOpen(false)} 
               className={({ isActive }) =>
                 `flex items-center gap-2 px-4 py-2 transition ${
                   isActive ? 'border-b-2 border-white' : 'hover:text-blue-300'

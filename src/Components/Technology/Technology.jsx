@@ -35,17 +35,13 @@ export default function Technology() {
       style={{ backgroundImage: `url(${bgTechnology})` }}
     >
       <div className="flex flex-col px-6 md:px-32">
-        {/* Page Heading */}
         <div className="flex items-center gap-4 mb-10">
           <span className="text-white text-lg font-bold opacity-50">03</span>
           <span className="text-white text-lg tracking-widest uppercase">Space Launch 101</span>
         </div>
 
-        {/* Main Content */}
         <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-10 mb-20">
-          {/* Text & Buttons */}
           <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
-            {/* Selector Buttons */}
             <div className="flex lg:flex-col gap-6">
               {[1, 2, 3].map((num, i) => (
                 <button
@@ -62,7 +58,6 @@ export default function Technology() {
               ))}
             </div>
 
-            {/* Text Section */}
             <div className="max-w-xl text-center lg:text-left space-y-6">
               <p className="uppercase text-white/50 tracking-widest text-md">The terminology…</p>
               <h2 className="text-4xl uppercase font-semibold">{technology.title}</h2>
@@ -70,7 +65,6 @@ export default function Technology() {
             </div>
           </div>
 
-          {/* Image */}
           <div className="w-full flex justify-center lg:justify-end mb-10 lg:mb-0">
             <img
               src={technology.image}
