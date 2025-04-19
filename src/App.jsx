@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Crew from './Components/Crew/Crew'
 import Technology from './Components/Technology/Technology'
 import Destination from './Components/Destination/Destination'
+import NotFound from './Components/NotFound/NotFound'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       {path:"technology",element:<Technology/>},
       
       {path:"destination",element:<Destination/>},
+      {path:"*",element:<NotFound/>},
       
     ]}
   ])
