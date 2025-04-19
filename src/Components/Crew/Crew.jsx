@@ -42,7 +42,7 @@ export default function Crew() {
     const timer = setTimeout(() => {
       setVisibleIndex(currentIndex);
       setIsFading(false);
-    }, 300); 
+    }, 300);
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
@@ -50,20 +50,20 @@ export default function Crew() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-fixed bg-center bg-no-repeat text-white transition-all duration-1000"
+      className="min-h-screen bg-cover bg-center text-white transition-all duration-1000"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="flex flex-col px-32 pt-10">
-        <div className="flex items-center gap-4 mb-10 mt-36" style={{ width: "219px", height: "34px" }}>
+      <div className="flex flex-col px-6 pt-20 md:px-16 lg:px-32">
+        <div className="flex items-center gap-4 mb-10 mt-28">
           <span className="text-white text-lg font-bold opacity-50">02</span>
           <span className="text-white text-lg tracking-widest uppercase">Meet your crew</span>
         </div>
 
-        <div className="flex flex-1 items-center justify-between gap-10 flex-wrap-reverse lg:flex-nowrap mb-28">
-          <div className={`max-w-xl space-y-6 text-center lg:text-left transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+          <div className={`text-center lg:text-left transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
             <h2 className="text-2xl uppercase opacity-50">{crew.role}</h2>
-            <h1 className="text-4xl uppercase font-semibold">{crew.name}</h1>
-            <p className="text-lg opacity-80">{crew.bio}</p>
+            <h1 className="text-4xl uppercase font-bellefair mt-2 mb-4">{crew.name}</h1>
+            <p className="text-lg opacity-80 max-w-xl mx-auto lg:mx-0">{crew.bio}</p>
 
             <div className="flex gap-4 justify-center lg:justify-start mt-6">
               {crewData.map((_, idx) => (
@@ -78,12 +78,8 @@ export default function Crew() {
             </div>
           </div>
 
-          <div className={`flex justify-center lg:justify-end w-full lg:w-auto transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
-            <img
-              src={crew.image}
-              alt={crew.name}
-              className="h-[500px] object-contain"
-            />
+          <div className={`transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
+            <img src={crew.image} alt={crew.name} className="h-[400px] sm:h-[500px] object-contain" />
           </div>
         </div>
       </div>

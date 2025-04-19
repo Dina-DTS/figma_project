@@ -8,28 +8,28 @@ import titanImg from "../../assets/image-titan.webp";
 const destinations = [
   {
     name: "Moon",
-    description: "See our planet as you’ve never seen it before...",
+    description: "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed.",
     distance: "384,400 KM",
     travelTime: "3 DAYS",
     image: moonImg,
   },
   {
     name: "Mars",
-    description: "Don’t forget to pack your hiking boots...",
+    description: "Pack your hiking boots to tackle Olympus Mons. It’s two and a half times the size of Everest!",
     distance: "225 MIL. KM",
     travelTime: "9 MONTHS",
     image: marsImg,
   },
   {
     name: "Europa",
-    description: "The smallest of the four Galilean moons orbiting Jupiter...",
+    description: "A winter lover’s dream. Ice skating, curling, hockey or relax in your snug wintery cabin.",
     distance: "628 MIL. KM",
     travelTime: "3 YEARS",
     image: europaImg,
   },
   {
     name: "Titan",
-    description: "The only moon known to have a dense atmosphere...",
+    description: "Home away from home with a dense atmosphere and views of the Rings of Saturn.",
     distance: "1.6 BIL. KM",
     travelTime: "7 YEARS",
     image: titanImg,
@@ -38,66 +38,60 @@ const destinations = [
 
 export default function Destination() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
-  const [visibleIndex, setVisibleIndex] = useState(0); 
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    setIsFading(true);
-    const timer = setTimeout(() => {
-      setVisibleIndex(currentIndex);
-      setIsFading(false);
-    }, 300);
-    return () => clearTimeout(timer);
+    setFade(true);
+    const t = setTimeout(() => setFade(false), 300);
+    return () => clearTimeout(t);
   }, [currentIndex]);
 
-  const destination = destinations[visibleIndex];
+  const dest = destinations[currentIndex];
 
   return (
     <div
-      className="min-h-screen bg-cover bg-fixed bg-center bg-no-repeat text-white transition-all duration-1000"
+      className="min-h-screen bg-cover bg-center bg-no-repeat text-white"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="flex flex-col px-32 pt-10">
-        <div className="flex items-center gap-4 mb-10 mt-36">
-          <span className="text-white text-lg font-bold opacity-50">01</span>
-          <span className="text-white text-lg tracking-widest uppercase">Pick your destination</span>
+      <div className="flex flex-col px-6 sm:px-10 md:px-16 lg:px-32 pt-10">
+        <div className="flex items-center gap-4 mt-24 mb-10">
+          <span className="text-lg font-bold opacity-50 font-condensed">01</span>
+          <span className="text-lg tracking-widest uppercase font-condensed">Pick your destination</span>
         </div>
 
-        <div className="flex flex-1 items-center justify-between gap-10 flex-wrap-reverse lg:flex-nowrap mb-28">
-          {/* Image with fade */}
-          <div className={`flex justify-center lg:justify-start w-full lg:w-auto transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
-            <img src={destination.image} alt={destination.name} className="h-[445px] object-contain" />
+        <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20 mb-28">
+          <div className={`transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"}`}>
+            <img src={dest.image} alt={dest.name} className="w-[170px] sm:w-[250px] md:w-[300px] lg:w-[445px]" />
           </div>
 
-          {/* Content with fade */}
-          <div className={`max-w-xl space-y-6 text-center lg:text-left transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}>
-            <div className="flex gap-8 justify-center lg:justify-start uppercase text-white text-sm tracking-widest mb-4">
-              {destinations.map((dest, idx) => (
+          <div className={`w-full max-w-xl text-center lg:text-left transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"}`}>
+            <div className="flex gap-6 justify-center lg:justify-start uppercase text-sm tracking-widest mb-4 font-condensed">
+              {destinations.map((d, i) => (
                 <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
                   className={`pb-2 border-b-2 transition-all ${
-                    idx === currentIndex ? "border-white" : "border-transparent hover:border-gray-500"
+                    i === currentIndex ? "border-white" : "border-transparent hover:border-gray-500"
                   }`}
                 >
-                  {dest.name}
+                  {d.name}
                 </button>
               ))}
             </div>
 
-            <h1 className="text-7xl uppercase font-semibold">{destination.name}</h1>
-            <p className="text-lg opacity-80">{destination.description}</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl uppercase font-bellefair">{dest.name}</h1>
+            <p className="text-base sm:text-lg opacity-80 font-barlow">{dest.description}</p>
 
             <hr className="my-6 border-gray-600" />
 
-            <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-12 text-center lg:text-left">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-12">
               <div>
-                <p className="uppercase text-sm text-gray-400 tracking-widest">Avg. Distance</p>
-                <h3 className="text-2xl">{destination.distance}</h3>
+                <p className="text-sm text-gray-400 tracking-widest uppercase font-condensed">Avg. Distance</p>
+                <h3 className="text-2xl font-bellefair">{dest.distance}</h3>
               </div>
               <div>
-                <p className="uppercase text-sm text-gray-400 tracking-widest">Est. Travel Time</p>
-                <h3 className="text-2xl">{destination.travelTime}</h3>
+                <p className="text-sm text-gray-400 tracking-widest uppercase font-condensed">Est. Travel Time</p>
+                <h3 className="text-2xl font-bellefair">{dest.travelTime}</h3>
               </div>
             </div>
           </div>

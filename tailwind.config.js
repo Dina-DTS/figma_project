@@ -10,6 +10,11 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
+      fontFamily: {
+        bellefair: ['Bellefair', 'serif'],
+        barlow: ['Barlow', 'sans-serif'],
+        condensed: ['Barlow Condensed', 'sans-serif'],
+      },
     },
   },
   plugins: [
